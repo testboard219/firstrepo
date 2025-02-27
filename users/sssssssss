@@ -1,0 +1,72 @@
+<?php
+/*$bitdefault='';
+$ammount='';
+$status='';
+
+if($_SERVER['REQUEST_METHOD'] === "POST"){
+ 
+ 
+   $bitdefault=$_POST["bit"];
+  $ammount=$_POST["ammount"];
+  $status=$_POST["status"];
+
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "cryptomax";
+
+
+try {
+  $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+  // set the PDO error mode to exception
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  $sql = "INSERT INTO withdraw2 (method, ammount, status)
+                      VALUES ('$bitdefault','$ammount','$status')";
+  // use exec() because no results are returned
+  $conn->exec($sql);
+  echo "New record created successfully";
+} catch(PDOException $e) {
+  echo $sql . "<br>" . $e->getMessage();
+}
+
+$conn = null;
+
+
+
+
+}
+?>
+
+
+
+<!------------------ends------>
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "cryptomax";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password,$dbname);
+
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+echo "Connected successfully";
+
+if(!empty($_SESSION['id'])){
+    $id = $_SESSION['id'];
+    
+    $result = mysqli_query($conn,"SELECT * FROM  withdraw2 WHERE id = $id");
+    $row = mysqli_fetch_assoc($result);
+  
+}
+?>
+
+<?php 
+
+$n = 0;
+
+?>
